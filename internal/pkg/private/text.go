@@ -43,7 +43,8 @@ func loadFont(file string, scale int32) (*v41.Font, error) {
 		fmt.Println("Font loaded from disk...")
 		return font, nil
 	} else {
-		absPath, _ := filepath.Abs("..\\gwyddionGamesEngine\\" +file + ".ttf")
+		relativeFilePath := filepath.Join(".", file + ".ttf")
+		absPath, _ := filepath.Abs(relativeFilePath)
 		fd, err := os.Open(absPath)
 		if err != nil {
 			return nil, err
