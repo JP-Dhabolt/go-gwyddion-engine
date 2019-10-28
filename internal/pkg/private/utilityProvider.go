@@ -1,7 +1,7 @@
 package private
 
 import "github.com/go-gl/gl/v4.1-core/gl"
-import "dev.azure.com/gwyddiongames/_git/go-gwyddion-engine/pkg/public"
+import "dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git/pkg/public"
 
 type utilityProvider struct {
 	BLACK public.Color

@@ -1,7 +1,7 @@
 package private
 
 import (
-	"dev.azure.com/gwyddiongames/_git/go-gwyddion-engine/pkg/public"
+	"dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git/pkg/public"
 	"github.com/4ydx/gltext/v4.1"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
