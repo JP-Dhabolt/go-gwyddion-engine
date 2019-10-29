@@ -1,0 +1,44 @@
+name: 0.1.$(Rev:r)
+
+variables:
+  tag: v$(Build.BuildNumber)
+
+trigger:
+  - master
+  - feature/*
+
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        pool:
+          vmImage: 'ubuntu-latest'
+        variables:
+          GOBIN: '$(GOPATH)/bin'
+          GOPATH: '$(system.defaultWorkingDirectory/gopath'
+        steps:
+          - checkout: self
+            persistCredentials: true
+
+          - script: |
+              git config user.email 'pipelines@gwyddiongames.com'
+              git config user.name 'Pipeline Automation User'
+              git tag $(tag)
+            displayName: Set up Git
+
+          - task: Go@0
+            displayName: go version
+            inputs:
+              command: 'custom'
+              customCommand: 'version'
+
+          - task: Go@0
+            displayName: go test
+            inputs:
+              command: 'test'
+              arguments: './...'
+
+          - script: |
+              git checkout $(tag)
+              git push origin $(tag)
+            displayName: Tag Repo
