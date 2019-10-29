@@ -13,9 +13,6 @@ stages:
       - job: Build
         pool:
           vmImage: 'ubuntu-latest'
-        variables:
-          GOBIN: '$(GOPATH)/bin'
-          GOPATH: '$(system.defaultWorkingDirectory/gopath'
         steps:
           - checkout: self
             persistCredentials: true
