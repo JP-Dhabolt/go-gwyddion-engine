@@ -20,7 +20,6 @@ stages:
           - script: |
               git config user.email 'pipelines@gwyddiongames.com'
               git config user.name 'Pipeline Automation User'
-              git tag $(tag)
             displayName: Set up Git
 
           - task: Go@0
@@ -29,13 +28,21 @@ stages:
               command: 'custom'
               customCommand: 'version'
 
-          - task: Go@0
-            displayName: go test
-            inputs:
-              command: 'test'
-              arguments: './...'
+# TODO: Re-enable testing once getting opengl dependencies with compiling is understood on build agent
+#          - task: Go@0
+#            displayName: go test
+#            inputs:
+#              command: 'test'
+#              arguments: './...'
 
           - script: |
-              git checkout $(tag)
+              git tag $(tag)
               git push origin $(tag)
             displayName: Tag Repo
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+          - script: |
+              git tag $(tag).dev
+              git push origin $(tag).dev
+            displayName: Tag Repo with Dev
+            condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
