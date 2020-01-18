@@ -14,7 +14,7 @@ type gameEngine struct {
 	myLoc   int32
 	options public.EngineOptions
 	program public.Program
-	font *v41.Font
+	font    *v41.Font
 }
 
 func (engine *gameEngine) setColor(color public.Color) {

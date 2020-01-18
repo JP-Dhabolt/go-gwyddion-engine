@@ -9,12 +9,12 @@ import (
 
 var (
 	samplesPerSecond = 441000
-	sr = beep.SampleRate(samplesPerSecond)
+	sr               = beep.SampleRate(samplesPerSecond)
 )
 
 type Engine struct {
-	mixer *beep.Mixer
-	musicQueue *queue
+	mixer        *beep.Mixer
+	musicQueue   *queue
 	effectsQueue *queue
 }
 
@@ -29,8 +29,8 @@ func Init() *Engine {
 	mixer.Add(&musicQueue, &effectsQueue)
 	speaker.Play(&mixer)
 	engine := Engine{
-		mixer: &mixer,
-		musicQueue: &musicQueue,
+		mixer:        &mixer,
+		musicQueue:   &musicQueue,
 		effectsQueue: &effectsQueue,
 	}
 	return &engine

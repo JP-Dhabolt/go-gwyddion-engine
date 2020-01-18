@@ -12,7 +12,7 @@ type queue struct {
 }
 
 func (q *queue) AddTone(frequency float64, duration time.Duration) {
-	sound := beep.Take(sr.N(duration), &Tone{frequencyInKHz:frequency})
+	sound := beep.Take(sr.N(duration), &Tone{frequencyInKHz: frequency})
 	q.Add(sound)
 }
 

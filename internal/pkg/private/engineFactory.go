@@ -15,7 +15,7 @@ func (factory engineFactory) CreateEngine(options public.EngineOptions) public.G
 
 	//font, err := loadFont("../gwyddionGamesEngine/luxisr.ttf", 1)
 	font, err := loadFont("luxisr", 1)
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 

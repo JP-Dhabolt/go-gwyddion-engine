@@ -61,7 +61,7 @@ func initOpenGl(options public.EngineOptions) openGlInfo {
 	return openGlInfo{prog, myLoc}
 }
 
-var onResize glfw.SizeCallback = func(window *glfw.Window, width int, height int){
+var onResize glfw.SizeCallback = func(window *glfw.Window, width int, height int) {
 	if width < 1 {
 		width = 1
 	}

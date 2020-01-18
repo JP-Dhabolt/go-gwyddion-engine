@@ -5,8 +5,8 @@ import (
 )
 
 type Tone struct {
-	currentSample    int
-	frequencyInKHz   float64
+	currentSample  int
+	frequencyInKHz float64
 }
 
 func (t *Tone) Stream(samples [][2]float64) (n int, ok bool) {
