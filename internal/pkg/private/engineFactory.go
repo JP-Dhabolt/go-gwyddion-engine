@@ -1,9 +1,10 @@
 package private
 
 import (
-	"dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git/pkg/public"
-	"github.com/go-gl/glfw/v3.2/glfw"
 	"log"
+
+	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
+	"github.com/go-gl/glfw/v3.2/glfw"
 )
 
 type engineFactory struct {
@@ -15,7 +16,7 @@ func (factory engineFactory) CreateEngine(options public.EngineOptions) public.G
 
 	//font, err := loadFont("../gwyddionGamesEngine/luxisr.ttf", 1)
 	font, err := loadFont("luxisr", 1)
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
