@@ -1,8 +1,8 @@
 package private
 
 import (
-	"dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git/pkg/public"
 	"github.com/4ydx/gltext/v4.1"
+	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
 	"time"
@@ -14,7 +14,7 @@ type gameEngine struct {
 	myLoc   int32
 	options public.EngineOptions
 	program public.Program
-	font *v41.Font
+	font    *v41.Font
 }
 
 func (engine *gameEngine) setColor(color public.Color) {

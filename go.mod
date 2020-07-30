@@ -1,4 +1,4 @@
-module dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git
+module github.com/GwyddionGames/go-gwyddion-engine
 
 go 1.12
 

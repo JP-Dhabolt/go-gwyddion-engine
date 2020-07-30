@@ -43,7 +43,7 @@ func loadFont(file string, scale int32) (*v41.Font, error) {
 		fmt.Println("Font loaded from disk...")
 		return font, nil
 	} else {
-		relativeFilePath := filepath.Join(".", file + ".ttf")
+		relativeFilePath := filepath.Join(".", file+".ttf")
 		absPath, _ := filepath.Abs(relativeFilePath)
 		fd, err := os.Open(absPath)
 		if err != nil {
@@ -63,7 +63,7 @@ func loadFont(file string, scale int32) (*v41.Font, error) {
 		runeRanges = append(runeRanges, gltext.RuneRange{Low: 0x4e00, High: 0x9faf})
 		runeRanges = append(runeRanges, gltext.RuneRange{Low: 0xff00, High: 0xffef})
 
-		runeScale := fixed.Int26_6(24*scale)
+		runeScale := fixed.Int26_6(24 * scale)
 		runesPerRow := fixed.Int26_6(128)
 		adjustedHeight := fixed.Int26_6(0)
 		config, err = gltext.NewTruetypeFontConfig(fd, runeScale, runeRanges, runesPerRow, adjustedHeight)

@@ -1,10 +1,11 @@
 package private
 
 import (
-	"dev.azure.com/gwyddiongames/_git/go-gwyddion-engine.git/pkg/public"
+	"log"
+
+	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
-	"log"
 )
 
 type openGlInfo struct {
@@ -61,7 +62,7 @@ func initOpenGl(options public.EngineOptions) openGlInfo {
 	return openGlInfo{prog, myLoc}
 }
 
-var onResize glfw.SizeCallback = func(window *glfw.Window, width int, height int){
+var onResize glfw.SizeCallback = func(window *glfw.Window, width int, height int) {
 	if width < 1 {
 		width = 1
 	}
