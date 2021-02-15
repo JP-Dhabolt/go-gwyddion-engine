@@ -1,8 +1,8 @@
 package start
 
 import (
-	"github.com/GwyddionGames/go-gwyddion-engine/internal/pkg/private"
-	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
+	"github.com/JP-Dhabolt/go-gwyddion-engine/internal/pkg/private"
+	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 )
 
 func Init(options public.InitOptions) public.EngineFactory {
