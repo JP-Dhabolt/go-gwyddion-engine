@@ -4,7 +4,7 @@ variables:
   tag: v$(Build.BuildNumber)
 
 trigger:
-  - master
+  - main
   - feature/*
 
 stages:
@@ -39,10 +39,10 @@ stages:
               git tag $(tag)
               git push origin $(tag)
             displayName: Tag Repo
-            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
           - script: |
               git tag $(tag).dev
               git push origin $(tag).dev
             displayName: Tag Repo with Dev
-            condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+            condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/main'))
