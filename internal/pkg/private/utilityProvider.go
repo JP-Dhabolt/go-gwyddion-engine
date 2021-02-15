@@ -1,7 +1,7 @@
 package private
 
 import (
-	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
+	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v4.1-core/gl"
 )
 

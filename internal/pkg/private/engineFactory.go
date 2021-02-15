@@ -3,7 +3,7 @@ package private
 import (
 	"log"
 
-	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
+	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/glfw/v3.2/glfw"
 )
 

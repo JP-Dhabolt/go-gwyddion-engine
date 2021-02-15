@@ -1,11 +1,12 @@
 package private
 
 import (
-	"github.com/4ydx/gltext/v4.1"
-	"github.com/GwyddionGames/go-gwyddion-engine/pkg/public"
+	"time"
+
+	v41 "github.com/4ydx/gltext/v4.1"
+	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
-	"time"
 )
 
 type gameEngine struct {
