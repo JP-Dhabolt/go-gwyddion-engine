@@ -1,0 +1,22 @@
+{
+	"name": "Go",
+	"dockerComposeFile":[
+		"docker-compose.yml",
+		"docker-compose.vscode.yml",
+	],
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"go.useGoProxyToCheckForToolUpdates": false,
+		"go.useLanguageServer": true,
+		"go.gopath": "/go",
+		"go.goroot": "/usr/local/go",
+		"go.toolsGopath": "/go/bin"
+	},
+	"extensions": [
+		"golang.Go"
+	],
+	"forwardPorts": [6080],
+	"remoteUser": "vscode",
+}

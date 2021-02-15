@@ -1,0 +1,16 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        VARIANT: "1.15"
+        INSTALL_NODE: "false"
+        NODE_VERSION: lts/*
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:cached
+      - go-path-volume:/go
+volumes:
+  go-path-volume:
