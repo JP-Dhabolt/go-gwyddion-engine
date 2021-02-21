@@ -21,17 +21,23 @@ func (factory engineFactory) CreateEngine(options public.EngineOptions) public.G
 
 	log.Println("Opened font")
 
-	return &gameEngine{
+	engine := gameEngine{
 		window:  factory.window,
 		glProg:  oglInfo.Prog,
 		myLoc:   oglInfo.Loc,
 		options: options,
 		font:    font,
 	}
+	engine.drawFuncs = &public.DrawFunctions{
+		SetColor: engine.setColor,
+		DrawTriangles: drawTriangles,
+		Clear: engine.clear,
+	}
+	return &engine
 }
 
 func (factory engineFactory) CreateUtils() public.EngineUtilityProvider {
-	return createUtilityProvider()
+	return utilityProvider{}
 }
 
 func EngineFactory(options public.InitOptions) public.EngineFactory {

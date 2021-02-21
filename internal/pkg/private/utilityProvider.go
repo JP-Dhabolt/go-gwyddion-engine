@@ -5,22 +5,7 @@ import (
 	"github.com/go-gl/gl/v2.1/gl"
 )
 
-type utilityProvider struct {
-	BLACK public.Color
-	RED   public.Color
-	BLUE  public.Color
-	GREEN public.Color
-}
-
-func createUtilityProvider() utilityProvider {
-	provider := utilityProvider{}
-	provider.BLACK = public.Color{Alpha: 1}
-	provider.RED = public.Color{Red: 1, Alpha: 1}
-	provider.BLUE = public.Color{Blue: 1, Alpha: 1}
-	provider.GREEN = public.Color{Green: 1, Alpha: 1}
-
-	return provider
-}
+type utilityProvider struct {}
 
 func (provider utilityProvider) CreateDrawable(points []float32) public.Drawable {
 	var vbo uint32

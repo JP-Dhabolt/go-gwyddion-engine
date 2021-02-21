@@ -19,6 +19,6 @@ type GameEngine interface {
 }
 
 type Program interface {
-	Tick(TickInfo)
-	Draw(DrawFunctions)
+	Tick(*TickInfo)
+	Draw(*DrawFunctions)
 }

@@ -3,24 +3,25 @@ package main
 import (
 	"math/rand"
 	"runtime"
+	"time"
 
+	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/color"
 	gamesEngine "github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/start"
 )
 
-var (
-	square = []float32{
-		-10, 10, 0,
-		-10, -10, 0,
-		10, -10, 0,
-		-10, 10, 0,
-		10, 10, 0,
-		10, -10, 0,
-	}
-)
-
 func init() {
 	runtime.LockOSThread()
+}
+
+var colors = []color.Color{
+	color.RED,
+	color.ORANGE,
+	color.YELLOW,
+	color.GREEN,
+	color.BLUE,
+	color.INDIGO,
+	color.VIOLET,
 }
 
 func main() {
@@ -45,22 +46,52 @@ func main() {
 	engine := factory.CreateEngine(options)
 	defer engine.Close()
 	program := integrationProgram{
-		utils,
+		utils: utils,
 	}
 
-	engine.RegisterProgram(program).Start()
+	engine.RegisterProgram(&program).Start()
 }
 
 type integrationProgram struct {
 	utils gamesEngine.EngineUtilityProvider
+	iteration int
 }
 
-func (p integrationProgram) Draw(functions gamesEngine.DrawFunctions) {
-	functions.SetColor(gamesEngine.Color{Alpha: 1})
-	drawable := p.utils.CreateDrawable(square)
-	functions.DrawTriangles(drawable, int32(len(square)/3))
+func determineScale(iteration int) float32 {
+	return float32(len(colors) - iteration)/float32(len(colors))
 }
 
-func (p integrationProgram) Tick(info gamesEngine.TickInfo) {
+func (p *integrationProgram) Draw(functions *gamesEngine.DrawFunctions) {
+	shape := createSquare(determineScale(p.iteration))
+	drawable := p.utils.CreateDrawable(shape)
+	functions.SetColor(colors[p.iteration])
+	functions.DrawTriangles(drawable, int32(len(shape)/3))
+	functions.SetColor(color.BLACK)
+}
 
+func (p *integrationProgram) Tick(info *gamesEngine.TickInfo) {
+	timeSinceStart := time.Since(info.StartTime)
+	wholeSecondsSinceStart := int(timeSinceStart.Seconds())
+	p.iteration = wholeSecondsSinceStart % len(colors)
+}
+
+func createSquare(scale float32) []float32 {
+	size := scale
+	return []float32{
+			-size, size, 0,
+			-size, -size, 0,
+			size, -size, 0,
+			-size, size, 0,
+			size, size, 0,
+			size, -size, 0,
+		}
+}
+
+func createTriangle(scale float32) []float32 {
+	size := scale
+	return []float32{
+			-size, size, 0,
+			-size, -size, 0,
+			size, -size, 0,
+		}
 }
