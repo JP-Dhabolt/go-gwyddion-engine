@@ -14,25 +14,30 @@ type engineFactory struct {
 func (factory engineFactory) CreateEngine(options public.EngineOptions) public.GameEngine {
 	oglInfo := initOpenGl(options)
 
-	//font, err := loadFont("../gwyddionGamesEngine/luxisr.ttf", 1)
-	font, err := loadFont("luxisr", 1)
+	font, err := loadFont("luxisr.ttf", 1)
 	if err != nil {
 		panic(err)
 	}
 
 	log.Println("Opened font")
 
-	return &gameEngine{
+	engine := gameEngine{
 		window:  factory.window,
 		glProg:  oglInfo.Prog,
 		myLoc:   oglInfo.Loc,
 		options: options,
 		font:    font,
 	}
+	engine.drawFuncs = &public.DrawFunctions{
+		SetColor:      engine.setColor,
+		DrawTriangles: drawTriangles,
+		Clear:         engine.clear,
+	}
+	return &engine
 }
 
 func (factory engineFactory) CreateUtils() public.EngineUtilityProvider {
-	return createUtilityProvider()
+	return utilityProvider{}
 }
 
 func EngineFactory(options public.InitOptions) public.EngineFactory {

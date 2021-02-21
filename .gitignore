@@ -5,3 +5,6 @@
 # Executables
 
 *.exe
+
+# Outputs
+fontconfigs
