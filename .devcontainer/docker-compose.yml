@@ -2,15 +2,17 @@ version: "3"
 services:
   app:
     build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
-      args:
-        VARIANT: "1.15"
-        INSTALL_NODE: "false"
-        NODE_VERSION: lts/*
+      context: .
+      dockerfile: Dockerfile
     working_dir: /workspace
+    environment:
+      - GOPRIVATE=github.com/JP-Dhabolt/go-gwyddion-engine
     volumes:
       - ..:/workspace:cached
       - go-path-volume:/go
+  vnc:
+    image: ghcr.io/jp-dhabolt/dev:vnc
+    ports:
+      - "6080:6080"
 volumes:
   go-path-volume:

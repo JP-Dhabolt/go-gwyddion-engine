@@ -2,7 +2,7 @@ package private
 
 import (
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
-	"github.com/go-gl/gl/v4.1-core/gl"
+	"github.com/go-gl/gl/v2.1/gl"
 )
 
 type utilityProvider struct {

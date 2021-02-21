@@ -3,10 +3,10 @@ package private
 import (
 	"time"
 
-	v41 "github.com/4ydx/gltext/v4.1"
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
-	"github.com/go-gl/gl/v4.1-core/gl"
+	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
+	"github.com/go-gl/gltext"
 )
 
 type gameEngine struct {
@@ -15,7 +15,7 @@ type gameEngine struct {
 	myLoc   int32
 	options public.EngineOptions
 	program public.Program
-	font    *v41.Font
+	font    *gltext.Font
 }
 
 func (engine *gameEngine) setColor(color public.Color) {
