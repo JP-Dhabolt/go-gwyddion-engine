@@ -29,9 +29,9 @@ func (factory engineFactory) CreateEngine(options public.EngineOptions) public.G
 		font:    font,
 	}
 	engine.drawFuncs = &public.DrawFunctions{
-		SetColor: engine.setColor,
+		SetColor:      engine.setColor,
 		DrawTriangles: drawTriangles,
-		Clear: engine.clear,
+		Clear:         engine.clear,
 	}
 	return &engine
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/go-gl/gl/v2.1/gl"
 )
 
-type utilityProvider struct {}
+type utilityProvider struct{}
 
 func (provider utilityProvider) CreateDrawable(points []float32) public.Drawable {
 	var vbo uint32

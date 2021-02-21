@@ -16,10 +16,10 @@ func NewColor(red, green, blue float32, alpha ...float32) Color {
 	if len(alpha) > 0 {
 		actualAlpha = alpha[0]
 	}
-	return Color {
-		Red: red,
+	return Color{
+		Red:   red,
 		Green: green,
-		Blue: blue,
+		Blue:  blue,
 		Alpha: actualAlpha,
 	}
 }

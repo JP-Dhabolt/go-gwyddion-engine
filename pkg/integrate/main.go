@@ -28,9 +28,9 @@ func main() {
 	rand.Seed(123)
 
 	initOptions := gamesEngine.InitOptions{
-		Width: 600,
-		Height: 400,
-		Title: "Integration",
+		Width:      600,
+		Height:     400,
+		Title:      "Integration",
 		Resizeable: true,
 	}
 
@@ -38,8 +38,8 @@ func main() {
 	utils := factory.CreateUtils()
 
 	options := gamesEngine.EngineOptions{
-		Fps: 60,
-		VertexShaderLocation: "./shaders/vertexShader.glsl",
+		Fps:                    60,
+		VertexShaderLocation:   "./shaders/vertexShader.glsl",
 		FragmentShaderLocation: "./shaders/fragmentShader.glsl",
 	}
 
@@ -53,12 +53,12 @@ func main() {
 }
 
 type integrationProgram struct {
-	utils gamesEngine.EngineUtilityProvider
+	utils     gamesEngine.EngineUtilityProvider
 	iteration int
 }
 
 func determineScale(iteration int) float32 {
-	return float32(len(colors) - iteration)/float32(len(colors))
+	return float32(len(colors)-iteration) / float32(len(colors))
 }
 
 func (p *integrationProgram) Draw(functions *gamesEngine.DrawFunctions) {
@@ -78,20 +78,20 @@ func (p *integrationProgram) Tick(info *gamesEngine.TickInfo) {
 func createSquare(scale float32) []float32 {
 	size := scale
 	return []float32{
-			-size, size, 0,
-			-size, -size, 0,
-			size, -size, 0,
-			-size, size, 0,
-			size, size, 0,
-			size, -size, 0,
-		}
+		-size, size, 0,
+		-size, -size, 0,
+		size, -size, 0,
+		-size, size, 0,
+		size, size, 0,
+		size, -size, 0,
+	}
 }
 
 func createTriangle(scale float32) []float32 {
 	size := scale
 	return []float32{
-			-size, size, 0,
-			-size, -size, 0,
-			size, -size, 0,
-		}
+		-size, size, 0,
+		-size, -size, 0,
+		size, -size, 0,
+	}
 }

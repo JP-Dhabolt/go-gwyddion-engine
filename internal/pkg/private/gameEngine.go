@@ -11,13 +11,13 @@ import (
 )
 
 type gameEngine struct {
-	window  *glfw.Window
-	glProg  uint32
-	myLoc   int32
-	options public.EngineOptions
-	program public.Program
-	font    *gltext.Font
-	drawFuncs  *public.DrawFunctions
+	window    *glfw.Window
+	glProg    uint32
+	myLoc     int32
+	options   public.EngineOptions
+	program   public.Program
+	font      *gltext.Font
+	drawFuncs *public.DrawFunctions
 }
 
 func (engine *gameEngine) setColor(color color.Color) {
