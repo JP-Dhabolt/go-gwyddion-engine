@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
-	"github.com/go-gl/gl/v4.1-core/gl"
+	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
 )
 
@@ -15,7 +15,7 @@ type openGlInfo struct {
 
 func initGlfw(options public.InitOptions) *glfw.Window {
 	if err := glfw.Init(); err != nil {
-		panic(err)
+		log.Fatalf("Error initializing GLFW: %s", err)
 	}
 
 	var resizable int
@@ -27,14 +27,14 @@ func initGlfw(options public.InitOptions) *glfw.Window {
 	}
 
 	glfw.WindowHint(glfw.Resizable, resizable)
-	glfw.WindowHint(glfw.ContextVersionMajor, 4)
+	glfw.WindowHint(glfw.ContextVersionMajor, 2)
 	glfw.WindowHint(glfw.ContextVersionMinor, 1)
-	glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLCoreProfile)
-	glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
+	glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLAnyProfile)
+	// glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
 
 	window, err := glfw.CreateWindow(options.Width, options.Height, options.Title, nil, nil)
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error creating GLFW Window: %s", err)
 	}
 	window.MakeContextCurrent()
 	window.SetKeyCallback(onKey)

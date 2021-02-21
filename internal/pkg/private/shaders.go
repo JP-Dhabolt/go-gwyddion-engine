@@ -2,9 +2,10 @@ package private
 
 import (
 	"fmt"
-	"github.com/go-gl/gl/v4.1-core/gl"
 	"io/ioutil"
 	"strings"
+
+	"github.com/go-gl/gl/v2.1/gl"
 )
 
 func compileShader(source []byte, shaderType uint32) (uint32, error) {
