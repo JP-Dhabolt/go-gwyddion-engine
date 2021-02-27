@@ -1,4 +1,4 @@
-.PHONY: build lint test integration-test
+.PHONY: build lint test integration-test run-life
 
 build:
 	go build ./...
@@ -11,3 +11,6 @@ test:
 
 integration-test:
 	go run ./cmd/integration/
+
+run-life:
+	go run ./cmd/life/
