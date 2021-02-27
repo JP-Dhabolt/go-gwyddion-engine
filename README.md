@@ -7,7 +7,7 @@ All of the eventual functionality of the game engine will work best when running
 To gain access to the windows being created by the game engine while running in Remote Containers, visit http://localhost:6080, which will show the virtual desktop being forwarded by a web VNC interface.
 
 ## Integration Test
-While this repo is intended as a library, there is a functional integration test program that can be ran by executing `make integrate`.  This will launch a window and cycle through drawing squares to the screen.  As additional functionality gets added to the engine, the plan is to integrate the functionality with this test program, both as an example of implementation, but also to verify functionality.
+While this repo is intended as a library, there is a functional integration test program that can be ran by executing `make integration-test`.  This will launch a window and cycle through drawing squares to the screen.  As additional functionality gets added to the engine, the plan is to integrate the functionality with this test program, both as an example of implementation, but also to verify functionality.
 
 ## Notes
 * There is an error that is thrown when first running an OpenGL application against the remote display.  I think there is some state in the image used for VNC.  If you run into this, simply execute the OpenGL application again and it should work.
