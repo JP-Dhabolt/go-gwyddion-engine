@@ -19,7 +19,7 @@ type FactoryOptions = opengl.InitOptions
 func (factory engineFactory) CreateEngine(options Options) GameEngine {
 	oglInfo := opengl.Initialize(options)
 
-	font, err := font.Load("luxisr.ttf", 1)
+	font, err := font.LoadDefault(1)
 	if err != nil {
 		panic(err)
 	}
