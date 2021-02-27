@@ -1,13 +1,13 @@
-package private
+package draw
 
 import (
-	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v2.1/gl"
 )
 
-type utilityProvider struct{}
+type UtilityProvider struct{}
+type Drawable uint32
 
-func (provider utilityProvider) CreateDrawable(points []float32) public.Drawable {
+func (provider UtilityProvider) CreateDrawable(points []float32) Drawable {
 	var vbo uint32
 
 	gl.GenBuffers(1, &vbo)
@@ -21,10 +21,10 @@ func (provider utilityProvider) CreateDrawable(points []float32) public.Drawable
 	gl.BindBuffer(gl.ARRAY_BUFFER, vbo)
 	gl.VertexAttribPointer(0, 3, gl.FLOAT, false, 0, nil)
 
-	return public.Drawable(vao)
+	return Drawable(vao)
 }
 
-func drawTriangles(drawable public.Drawable, length int32) {
+func Triangles(drawable Drawable, length int32) {
 	gl.BindVertexArray(uint32(drawable))
 	gl.DrawArrays(gl.TRIANGLES, 0, length)
 }

@@ -1,8 +1,9 @@
-package public
+package engine
 
 import (
 	"time"
 
+	"github.com/JP-Dhabolt/go-gwyddion-engine/internal/draw"
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/color"
 )
 
@@ -19,4 +20,4 @@ type DrawFunctions struct {
 	Clear         func()
 }
 
-type Drawable uint32
+type Drawable = draw.Drawable

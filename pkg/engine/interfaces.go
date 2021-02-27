@@ -1,7 +1,7 @@
-package public
+package engine
 
 type EngineFactory interface {
-	CreateEngine(EngineOptions) GameEngine
+	CreateEngine(Options) GameEngine
 	CreateUtils() EngineUtilityProvider
 }
 

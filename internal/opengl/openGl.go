@@ -1,9 +1,8 @@
-package private
+package opengl
 
 import (
 	"log"
 
-	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
 )
@@ -13,7 +12,20 @@ type openGlInfo struct {
 	Loc  int32
 }
 
-func initGlfw(options public.InitOptions) *glfw.Window {
+type InitOptions struct {
+	Resizeable bool
+	Width      int
+	Height     int
+	Title      string
+}
+
+type OpenGlOptions struct {
+	Fps                    int
+	VertexShaderLocation   string
+	FragmentShaderLocation string
+}
+
+func InitGlfw(options InitOptions) *glfw.Window {
 	if err := glfw.Init(); err != nil {
 		log.Fatalf("Error initializing GLFW: %s", err)
 	}
@@ -43,7 +55,7 @@ func initGlfw(options public.InitOptions) *glfw.Window {
 	return window
 }
 
-func initOpenGl(options public.EngineOptions) openGlInfo {
+func Initialize(options OpenGlOptions) openGlInfo {
 	if err := gl.Init(); err != nil {
 		panic(err)
 	}
