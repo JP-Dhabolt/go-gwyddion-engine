@@ -1,23 +1,11 @@
 package engine
 
-type EngineFactory interface {
-	CreateEngine(Options) GameEngine
-	CreateUtils() EngineUtilityProvider
-}
+/*
+Program interface is what is expected by the game engine to operate.
 
-type EngineUtilityProvider interface {
-	CreateDrawable(points []float32) Drawable
-}
-
-type Starter interface {
-	Start()
-}
-
-type GameEngine interface {
-	RegisterProgram(Program) Starter
-	Close()
-}
-
+Tick function gets executed every frame, and is intended to modify game state
+Draw function gets executed every frame, after Tick, and is intended to draw the current frame to the screen
+*/
 type Program interface {
 	Tick(*TickInfo)
 	Draw(*DrawFunctions)
