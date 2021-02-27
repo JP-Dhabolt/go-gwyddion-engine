@@ -1,0 +1,45 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: build_test_and_lint
+    container: ghcr.io/jp-dhabolt/dev:go-gl
+    env:
+      BUILD_NUMBER: 0.3.${{ github.run_number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: make build
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
+
+      - name: Setup Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Tag (dev)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git tag $BUILD_NUMBER.dev
+          git push origin $BUILD_NUMBER.dev
+
+      - name: Tag
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          git tag $BUILD_NUMBER
+          git push origin $BUILD_NUMBER
