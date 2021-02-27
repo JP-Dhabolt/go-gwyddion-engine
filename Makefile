@@ -1,4 +1,4 @@
-.PHONY: build lint test integrate
+.PHONY: build lint test integration-test
 
 build:
 	go build ./...
@@ -9,5 +9,5 @@ lint:
 test:
 	go test ./...
 
-integrate:
-	go run ./pkg/integrate/
+integration-test:
+	go run ./cmd/integration/
