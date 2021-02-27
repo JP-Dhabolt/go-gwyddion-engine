@@ -37,9 +37,7 @@ func main() {
 	utils := factory.CreateUtils()
 
 	options := gamesEngine.Options{
-		Fps:                    60,
-		VertexShaderLocation:   "./shaders/vertexShader.glsl",
-		FragmentShaderLocation: "./shaders/fragmentShader.glsl",
+		Fps: 60,
 	}
 
 	engine := factory.CreateEngine(options)
