@@ -32,16 +32,45 @@ func compileShader(source []byte, shaderType uint32) (uint32, error) {
 	return shader, nil
 }
 
-func getShader(location string, shaderType uint32) uint32 {
+func getShaderFromFile(location string, shaderType uint32) uint32 {
 	shaderSource, err := ioutil.ReadFile(location)
 	if err != nil {
 		panic(err)
 	}
+	return getShader(shaderSource, shaderType)
+}
 
+func getShader(shaderSource []byte, shaderType uint32) uint32 {
 	shader, err := compileShader(shaderSource, shaderType)
 	if err != nil {
 		panic(err)
 	}
 
 	return shader
+}
+
+func getDefaultFragmentShader() uint32 {
+	return getShader([]byte(`
+#version 140
+
+uniform vec4 color;
+
+out vec4 frag_colour;
+
+void main() {
+    frag_colour = color;
+}
+	`), gl.FRAGMENT_SHADER)
+}
+
+func getDefaultVertexShader() uint32 {
+	return getShader([]byte(`
+#version 140
+in vec3 position;
+in vec4 color;
+
+void main() {
+    gl_Position = vec4(position, 1.0);
+}
+	`), gl.VERTEX_SHADER)
 }

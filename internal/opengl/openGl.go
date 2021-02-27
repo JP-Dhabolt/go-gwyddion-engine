@@ -62,8 +62,19 @@ func Initialize(options OpenGlOptions) openGlInfo {
 	version := gl.GoStr(gl.GetString(gl.VERSION))
 	log.Println("OpenGL version", version)
 
-	vertexShader := getShader(options.VertexShaderLocation, gl.VERTEX_SHADER)
-	fragmentShader := getShader(options.FragmentShaderLocation, gl.FRAGMENT_SHADER)
+	var vertexShader uint32
+	var fragmentShader uint32
+	if options.VertexShaderLocation == "" {
+		vertexShader = getDefaultVertexShader()
+	} else {
+		vertexShader = getShaderFromFile(options.VertexShaderLocation, gl.VERTEX_SHADER)
+	}
+
+	if options.FragmentShaderLocation == "" {
+		fragmentShader = getDefaultFragmentShader()
+	} else {
+		fragmentShader = getShaderFromFile(options.FragmentShaderLocation, gl.FRAGMENT_SHADER)
+	}
 
 	prog := gl.CreateProgram()
 	gl.AttachShader(prog, vertexShader)
