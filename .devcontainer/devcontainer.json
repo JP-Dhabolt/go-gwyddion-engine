@@ -17,6 +17,7 @@
 	"extensions": [
 		"golang.Go",
 		"slevesque.shader",
+		"me-dutour-mathieu.vscode-github-actions",
 	],
 	"forwardPorts": [],
 	"remoteUser": "vscode",
