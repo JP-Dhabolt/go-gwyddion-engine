@@ -1,10 +1,9 @@
-package private
+package engine
 
 import (
 	"time"
 
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/color"
-	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
 	"github.com/go-gl/gltext"
@@ -14,10 +13,10 @@ type gameEngine struct {
 	window    *glfw.Window
 	glProg    uint32
 	myLoc     int32
-	options   public.EngineOptions
-	program   public.Program
+	options   Options
+	program   Program
 	font      *gltext.Font
-	drawFuncs *public.DrawFunctions
+	drawFuncs *DrawFunctions
 }
 
 func (engine *gameEngine) setColor(color color.Color) {
@@ -25,7 +24,7 @@ func (engine *gameEngine) setColor(color color.Color) {
 }
 
 func (engine *gameEngine) Start() {
-	tickInfo := public.TickInfo{StartTime: time.Now(), CurrentTime: time.Now(), TickNumber: 1}
+	tickInfo := TickInfo{StartTime: time.Now(), CurrentTime: time.Now(), TickNumber: 1}
 	for !engine.window.ShouldClose() {
 		engine.tick(&tickInfo)
 		engine.draw()
@@ -36,12 +35,12 @@ func (engine *gameEngine) Start() {
 	}
 }
 
-func (engine *gameEngine) RegisterProgram(program public.Program) public.Starter {
+func (engine *gameEngine) RegisterProgram(program Program) Starter {
 	engine.program = program
 	return engine
 }
 
-func (engine *gameEngine) tick(info *public.TickInfo) {
+func (engine *gameEngine) tick(info *TickInfo) {
 	engine.program.Tick(info)
 }
 

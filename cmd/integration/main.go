@@ -6,8 +6,7 @@ import (
 	"time"
 
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/color"
-	gamesEngine "github.com/JP-Dhabolt/go-gwyddion-engine/pkg/public"
-	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/start"
+	gamesEngine "github.com/JP-Dhabolt/go-gwyddion-engine/pkg/engine"
 )
 
 func init() {
@@ -27,17 +26,17 @@ var colors = []color.Color{
 func main() {
 	rand.Seed(123)
 
-	initOptions := gamesEngine.InitOptions{
+	initOptions := gamesEngine.FactoryOptions{
 		Width:      600,
 		Height:     400,
 		Title:      "Integration",
 		Resizeable: true,
 	}
 
-	factory := start.Init(initOptions)
+	factory := gamesEngine.NewFactory(initOptions)
 	utils := factory.CreateUtils()
 
-	options := gamesEngine.EngineOptions{
+	options := gamesEngine.Options{
 		Fps:                    60,
 		VertexShaderLocation:   "./shaders/vertexShader.glsl",
 		FragmentShaderLocation: "./shaders/fragmentShader.glsl",

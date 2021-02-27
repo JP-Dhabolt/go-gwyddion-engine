@@ -1,4 +1,4 @@
-package private
+package draw
 
 import "testing"
 
