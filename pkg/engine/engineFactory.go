@@ -5,7 +5,7 @@ import (
 
 	"github.com/JP-Dhabolt/go-gwyddion-engine/internal/font"
 	"github.com/JP-Dhabolt/go-gwyddion-engine/internal/opengl"
-	"github.com/go-gl/glfw/v3.2/glfw"
+	"github.com/go-gl/glfw/v3.3/glfw"
 )
 
 // Factory is used to enable OpenGL functiality before creating the engine itself

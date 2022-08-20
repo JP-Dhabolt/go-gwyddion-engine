@@ -24,3 +24,8 @@ The Game of Life example (and the origins of the engine itself) originated with 
 ## Notes
 * There is an error that is thrown when first running an OpenGL application against the remote display.  I think there is some state in the image used for VNC.  If you run into this, simply execute the OpenGL application again and it should work.
 * The mouse click functionality of the VNC web interface does not seem to be working correctly, as both left and right clicks bring up a context menu, and neither allows for dragging.  This is something to look into for future functionality.
+
+## WSL2 / Ubuntu Setup
+
+* `sudo apt-get install --no-install-recommends libglfw3-dev libxcursor-dev libxinerama-dev libxi-dev libxrandr-dev libxxf86vm-dev mesa-utils xorg-dev libgl1-mesa-dev`
+* `brew install gcc@5`
