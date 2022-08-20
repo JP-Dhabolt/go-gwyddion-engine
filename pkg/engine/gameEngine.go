@@ -5,7 +5,7 @@ import (
 
 	"github.com/JP-Dhabolt/go-gwyddion-engine/pkg/color"
 	"github.com/go-gl/gl/v2.1/gl"
-	"github.com/go-gl/glfw/v3.2/glfw"
+	"github.com/go-gl/glfw/v3.3/glfw"
 	"github.com/go-gl/gltext"
 )
 
